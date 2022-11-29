@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "AboutSenegal";
+}
+<div class="container">
+    <div class="heading heading-v1 margin-bottom-30">
+        <h2><span class="color-green">About </span> Senegal</h2>
+    </div>
+    <table>
+        <tr>
+            <td class="auto-style4" valign="top"></td>
+            <td>
+                <p>
+                    Situated at the Westernmost part of the African continent, Senegal extends around a surface area of 75,955 sq mi. It shares borders with Mauritania in the North, Mali in the East, Guinea Conakry in the south-east and Guinea Bissau in the south-west. The Gambia is an enclave in the Southern part of Senegal.
+                </p>
+                <p>
+                    &nbsp;I believe that we have a great executive team who is
+                    dedicated to this organization. We want to know who you are and
+                    get to know you a little more. Let us know what&#8217;s going on with
+                    you, new jobs, graduations, weddings, baptisms, talents&#8230; are you
+                    new to Minnesota, what&#8217;s going well for you here and what are your
+                    obstacles. Let us celebrate together and support each other in
+                    times of needs. Be active in the organization, attend functions,
+                    and give us suggestions and feedback.
+                </p><br />
+                <p align="left" class="style9">
+                    Senegal has a population of 11,658,000 inhabitants (2005 estimate). Over 25% of the population is concentrated in the Dakar region. The eastern part of the country is very sparsely populated. There are about twenty ethnic groups, the main ones being Wolof (43 %), Pulaar (24 %), and Sereer (15 %). Foreigners constitute 2% of population. They are mostly present in the capital, Dakar, where they are involved in the trade, industry and services sector and work in international organisations. Others, particularly nationals from neighbouring countries, are also found in northern and southern Senegal
+                </p>
+                <p align="left" class="style9">
+                    Senegal hosts the first university in francophone West and Central Africa which was founded during the colonial era and which trained the first African leaders. This tradition of excellence in education and training is still strong and Senegal continues to be the crucible of qualified human resources.
+                    .
+                </p>
+                <p align="left" class="style9">
+                    In the Constitution, the Senegalese people also proclaim their respect for the inviolable guarantee of political and trade union liberties, freedom of the human being, the family and local governments, philosophical and religious freedom, ownership rights and economic and social rights.
+                    .
+                </p>
+                <p class="style2">
+                    The sun shines almost all year round on hundreds of miles of beautiful beaches, estuaries, mangrove swamps, savannahs and a semi-desert in the north. The Casamance region, a strip of land stretching from east to west across the country below The Gambia, boasts some of the best beaches in West Africa, and is one of the most touristic parts of Senegal, a vision of tropical splendour with lush forests, coconut palm groves, brilliant flame trees and bougainvillea, and warm waters brushing the endless stretches of sandy beaches.
+                    ;
+                </p>
+                <p align="left" class="style9">
+                    The modern capital of Dakar, situated on the tip of the Cap Vert peninsula, is a vibrant hive of local and international activity.
+                    ;
+                </p>
+                <p>Just two miles offshore lies Gorée, an island that was the most important slave depot in West Africa between the 16th and the 19th centuries;</p>
+                <p>Not only does Senegal offer seaside resorts, a fascinating history, and a modern business infrastructure, but there are also national parks rich in flora and fauna, excellent scuba-diving and fishing opportunities, a diversity of cultures and customs, and a warm welcome by its people who adhere to the traditional values of respect for others, good manners and Téraanga (= hospitality). ;</p>
+
+            </td>
+        </tr>
+    </table>
+    <!-- Basic Map -->
+    <div class="headline"><h3>Locate Senegal</h3></div>
+    <div id="map" class="map margin-bottom-50"></div>
+    <!-- End Basic Map -->
+
+</div>
+
+<script>
+    function initMap() {
+        var uluru = { lat: 14.4574022, lng: -18.9367661 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbCZ47f1aERfsTmG5AyUsJaZSiPh7YN8I&callback=initMap">
+</script>
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.js"></script>
+    <script src="assets/plugins/html5shiv.js"></script>
+    <script src="assets/plugins/placeholder-IE-fixes.js"></script>
+    <![endif]-->

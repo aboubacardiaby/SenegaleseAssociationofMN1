@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    div.jtable-main-container {
+    font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 14px;
+    background: #fff;
+    line-height: 1.3;
+}
+    .ui-widget-content {
+    border: 1px solid #666;
+   background:snow;
+    color: black;
+}
+ .ui-widget-content {
+    border: 1px solid #666;   
+     background:snow;
+}
+</style>
+<h2>Index</h2>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#MemberTableContainer').jtable({
+            title: 'Member List',
+            paging: true,
+            pageSize: 10,
+            sorting: true,
+            defaultSorting: 'Name ASC',
+            actions: {
+                listAction: '@Url.Action("MemberList")',
+                updateAction: '@Url.Action("UpdateMember")',
+                createAction: '@Url.Action("CreateMember")'
+            },
+            fields: {
+                MemberId: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                FirstName: {
+                    title: 'First Name',
+                    width: '15%'
+                },
+                LastName: {
+                    title: 'Last Name',
+                    width: '15%',
+                    list: true
+                },
+                Address: {
+                    title: 'Sreet Address',
+                    list: true,
+                    width: '23%'
+                },
+                City: {
+                    title: 'City',
+                    width: '23%'
+                },
+                State: {
+                    title: 'State',
+                    width: '10%'
+                },
+                Zipcode: {
+                    title: 'Zip Code',
+                    width: '10%'
+                },
+
+                Email: {
+                    title: 'Email Address',
+                    list: true,
+                    width: '23%'
+                },
+                PhoneNumber: {
+                    title: 'Phone',
+                    list: true,
+                    width: '23%'
+                }
+            }
+
+        });
+
+        $('#MemberTableContainer').jtable('load');
+    });
+</script>
+<div class="container content profile">
+    <div class="row">
+        <div id="MemberTableContainer"></div>
+     </div>
+ </div>
+

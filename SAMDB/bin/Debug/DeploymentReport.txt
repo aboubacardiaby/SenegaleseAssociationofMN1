@@ -1,0 +1,35 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[EmailAddress] (Table)
+       [dbo].[tblAddress] (Table)
+       [dbo].[tblMember] (Table)
+       [dbo].[tblPhone] (Table)
+       [dbo].[UserProfile] (Table)
+       [dbo].[webpages_Membership] (Table)
+       [dbo].[webpages_OAuthMembership] (Table)
+       [dbo].[webpages_Roles] (Table)
+       [dbo].[webpages_UsersInRoles] (Table)
+       Default Constraint: unnamed constraint on [dbo].[webpages_Membership] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[webpages_Membership] (Default Constraint)
+       [dbo].[FK_EmailAddress_tblMember] (Foreign Key)
+       [dbo].[FK_tblAddress_tblAddress] (Foreign Key)
+       [dbo].[FK_tblPhone_tblMember] (Foreign Key)
+       [dbo].[fk_RoleId] (Foreign Key)
+       [dbo].[fk_UserId] (Foreign Key)
+       [dbo].[ADD_NEWADDRESS] (Procedure)
+       [dbo].[ADD_NEWEMAILADDRESS] (Procedure)
+       [dbo].[ADD_NEWPHONE] (Procedure)
+       [dbo].[Usp_GetAllMembers] (Procedure)
+       [dbo].[ADD_NEWMEMBER] (Procedure)
+
+** Supporting actions

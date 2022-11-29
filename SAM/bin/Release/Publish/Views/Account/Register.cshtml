@@ -1,0 +1,107 @@
+﻿@model SAM.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@*<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Create a new account.</h2>
+</hgroup>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+        </ol>
+        <input type="submit" value="Register" />
+    </fieldset>
+}*@
+
+	<div class="row">
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					@using (Html.BeginForm()) {
+                 @Html.AntiForgeryToken()
+                 @Html.ValidationSummary()
+						<div class="reg-header">
+							<h2>Register a new account</h2>
+							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
+						</div>
+                        <div class="row">
+                             <div class="col-sm-6">
+						        <label>First Name</label>
+						        @*<input type="text" class="form-control margin-bottom-20">*@
+                                 @Html.TextBoxFor(m=>m.FirstName,new { @class = "form-control margin-bottom-20"})
+                                 </div>
+							    <div class="col-sm-6">
+						        <label>Last Name</label>
+						         @Html.TextBoxFor(m=>m.LastName,new { @class = "form-control margin-bottom-20"})
+                            </div>
+                          </div>
+                        <label> Address <span class="color-red">*</span></label>
+						 @Html.TextBoxFor(m=>m.Address,new { @class = "form-control margin-bottom-20"})
+                        <div class="row">
+							<div class="col-sm-6">
+                         <label>  @Html.LabelFor(m => m.City) <span class="color-red">*</span></label>
+						 @Html.TextBoxFor(m=>m.City,new { @class = "form-control margin-bottom-20"})
+                                </div>
+							<div class="col-sm-6">
+                         <label>  @Html.LabelFor(m => m.State) <span class="color-red">*</span></label>
+						 @Html.TextBoxFor(m=>m.State,new { @class = "form-control margin-bottom-20"})
+                            </div>
+							<div class="col-sm-6">
+                         <label>  @Html.LabelFor(m => m.ZipCode) <span class="color-red">*</span></label>
+						 @Html.TextBoxFor(m=>m.ZipCode,new { @class = "form-control margin-bottom-20"})
+                          </div>
+							<div class="col-sm-6">
+                         <label>  @Html.LabelFor(m => m.Phone) <span class="color-red">*</span></label>
+						 @Html.TextBoxFor(m=>m.Phone,new { @class = "form-control margin-bottom-20"})
+						      </div>
+						</div>
+                       <label>  @Html.LabelFor(m => m.UserName) <span class="color-red">*</span></label>
+						 @Html.TextBoxFor(m=>m.UserName,new { @class = "form-control margin-bottom-20"})
+
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Password <span class="color-red">*</span></label>
+								 @Html.TextBoxFor(m=>m.Password,new { @class = "form-control margin-bottom-20"})
+							</div>
+							<div class="col-sm-6">
+								<label>Confirm Password <span class="color-red">*</span></label>
+								 @Html.TextBoxFor(m=>m.ConfirmPassword,new { @class = "form-control margin-bottom-20"})
+							</div>
+						</div>
+
+						<hr>
+                        
+						<div class="row">
+							<div class="col-lg-6 checkbox">
+								<label>
+									<input type="checkbox">
+									I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
+								</label>
+							</div>
+							<div class="col-lg-6 text-right">
+								@*<button class="btn-u" type="submit" value="Register">Register</button>*@
+                                 <input type="submit" value="Register" class="btn-u" />
+							</div>
+						</div>
+     }
+				</div>
+			</div>
+		</div><!--/container-->
+		<!--=== End Content Part ===-->

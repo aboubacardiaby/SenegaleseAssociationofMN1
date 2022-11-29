@@ -1,0 +1,427 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="~/Scripts/image_slide.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+
+<script type="text/javascript">
+    function prepHref(linkElement) {
+        var myDiv = document.getElementById('Div_contain_image');
+        var myImage = myDiv.children[0];
+        linkElement.href = myImage.src;
+    }
+</script>
+
+<style>
+ .da-slide h2 i {
+    font-size: 26px;
+    font-style: normal;
+    padding: 0 5px;
+    text-transform: uppercase;
+    background-color: rgba(46, 98, 0, 0.8);
+}
+.goal {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        font-weight: inherit;
+        font-style: inherit;
+        font-size: 100%;
+        font-family: inherit;
+        vertical-align: baseline;
+    }
+    .area {
+        text-align: center;
+        font-size: 2.5em;
+        color: red;
+        letter-spacing: 0px;
+        font-weight: 100;
+        text-transform: uppercase;
+        animation: blur .75s ease-out infinite;
+        text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
+        float: right;
+    }
+    #scrollingText
+	{
+		width: 728px;
+		height: 70px;
+		position: relative;
+		border: solid 1px #ccc;
+		padding-top: 20px;
+	}
+
+        #scrollingText div.scrollableArea p {
+            display: block;
+            float: left;
+            margin: 0;
+            padding-right: 20px;
+            font-family: Georgia,Times, 'Times New Roman', Serif;
+            font-size: 45px;
+            line-height: 45px;
+            font-weight: bold;
+            background-color: #fff;
+            color: #000;
+            white-space: nowrap;
+        }
+
+    @@keyframes blur {
+        from {
+            text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff, 0px 0px 25px #fff, 0px 0px 25px #fff, 0px 0px 25px #fff, 0px 0px 25px #fff, 0px 0px 25px #fff, 0px 0px 25px #fff, 0px 0px 50px #fff, 0px 0px 50px #fff, 0px 0px 50px #7B96B8, 0px 0px 150px #7B96B8, 0px 10px 100px #7B96B8, 0px 10px 100px #7B96B8, 0px 10px 100px #7B96B8, 0px 10px 100px #7B96B8, 0px -10px 100px #7B96B8, 0px -10px 100px #7B96B8;
+        }
+    }
+</style>
+
+
+<!--=== Slider ===-->
+
+    <div id="da-slider" class="da-slider">
+        <div class="da-slide">
+            <!--<h2 style="margin-left:0px">
+                <i>National ID Registration</i> <br />
+                <i>March 16th, 2017</i> <br /></h2>
+                <div class="da-img" style=" max-width:60%; margin-top:-100px">
+                    <a href="#" onclick="prepHref(this)" download>-->
+                        @*<img class="img-responsive" src="~/Images/declaration.jpg" alt="MyImage" style=" max-width:60%">*@
+                    <!--</a>-->
+        </div>
+</div>
+        <div class="da-slide">
+            @*<h2><i>Visit Senegal</i> <br /> <i>SUPPORT AND</i> <br /> <i>MANY MORE</i></h2>
+            <p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i></p>*@
+            <div class="da-img">
+                <iframe src="http://player.vimeo.com/video/21293958" width="530" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="da-slide">
+            @*<h2><i></i> <br /> <i>SOLUTIONS WITH</i> <br /> <i>HTML5/CSS3</i></h2>*@
+           
+            <div class="da-img"><img src="~/Images/franco.jpg" alt="image01" /></div>
+        </div>
+        <div class="da-arrows">
+            <span class="da-arrows-prev"></span>
+            <span class="da-arrows-next"></span>
+        </div>
+    </div>
+    
+<div class="container content" style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px">
+    <div class=" col-xs-12 col-sm-4" style="width: 510px;">
+        <div class="row">
+            <div class="span12">
+
+                <div id="tab" class="btn-group" data-toggle="buttons-radio">
+                    <a href="#welcomemsg" class="btn btn-large btn-info active" data-toggle="tab">Bienvenue/Welcome</a>
+                    <a href="#eventmsg" class="btn btn-large btn-info" data-toggle="tab">Event News</a>
+                    @*<a href="#requests2" class="btn btn-large btn-info" data-toggle="tab">Requests</a>
+                        <a href="#contact2" class="btn btn-large btn-info" data-toggle="tab">Contact</a>*@
+                </div>
+                <a href="@Url.Action("Register", "Account")" class="area">Join SAM</a>
+                @* @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@
+                <div class="tab-content">
+                    <div class="tab-pane active" id="welcomemsg">
+                        <div class="row">
+                            <div class="headline">
+                                <h2>Welcome To SAM</h2>
+                            </div>
+                            <div class="row" style="width: 960px">
+
+                                <div class="col-sm-7">
+                                    @* <div class="col-sm-2" style="width:100%">*@
+                                    <img class="img-rounded img-responsive pull-left" src="~/Images/president.jpg" width="100" alt="" style="margin-right:10px">
+                                    @*</div>*@
+                                    <p>
+                                        The challenges continue to be the motivation of
+                                        people and seeking to make our members aware that this
+                                        organization is essential to our community and that we need the
+                                        support of our fellow members in order for this to propel forward.<br />
+                                        I believe that we have a great executive team who is
+                                        dedicated to this organization. We want to know who you are an
+                                        get to know you a little more. Let us know what is going on with
+                                        you, new jobs, graduations, weddings, baptisms, talents; are you
+                                        new to Minnesota, what&#8217;s going well for you here and what are your
+                                        obstacles. Let us celebrate together and support each other in
+                                        times of needs. Be active in the organization, attend functions,
+                                        and give us suggestions and feedback.
+                                        <a class="btn-more hover-effect" href="@Url.Action("MotduPresident")">read more +</a>
+                                    </p>
+                                    <blockquote class="hero-unify">
+                                        <p>
+                                            Be active in the organization, attend functions,
+                                            and give us suggestions and feedback
+                                        </p>
+                                        <small>President, Khady Aidara</small>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="eventmsg">
+                        <div class="row" style="width: 960px">
+                            <div class=" headline">
+                                <h2>SAM News</h2>
+                            </div>
+
+                            <div class="col-sm-6" style="font-weight: bolder;">
+                                @Html.Partial("_Ticker")
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slider Begin Here-->
+    <div id="da-slider" class="col-xs-6 col-sm-6" style="margin: 0px">
+
+        <div>
+            <ul class="slideshow">
+                <li class="show">
+                    <img width="650" height="400" src="images/AfricanRenaissance Monument.jpg" alt="Monument de la renaissance" />
+                    <div class="da-img">
+                        <iframe src="http://player.vimeo.com/video/21293958" width="530" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/home_2.jpg" alt="Parc des Oiseaux de Djouj" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/LutteSen.jpg" alt="La Lutte Senegalaise" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/Carrapide.jpg" alt="Car Rapide" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/saint_louis_senegal_profile.jpg" alt="Saint Louis du Senegal" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/SAM1.jpg" alt="Slave house" />
+                </li>
+                @*<li>
+                        <img width="650" height="400" src="images/Women.jpg" alt="Confidence" />
+                    </li>*@
+                @*<li>
+                        <img width="650" height="400" src="images/ville.jpg" alt="Dakar View" />
+                    </li>*@
+                <li>
+                    <img width="650" height="400" src="images/senegal-political.jpg" alt="Sudivision terriroriale du Seneg" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/dakar.jpg" alt="" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/Cap.jpg" alt="" />
+                </li>
+                <li>
+                    <img width="650" height="400" src="images/hotelview1.jpg" alt="Dakar View" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--/slider-->
+    <!--=== End Slider ===-->
+    <!--=== Content Part ===-->
+    <div class="container content-sm" style=" padding-top: 0px;    padding-bottom: 0px;">
+        <!-- Info Blokcs -->
+        <div class="row margin-bottom-30">
+            <!-- Welcome Block -->
+            <div class="col-md-6 md-margin-bottom-40">
+                <div class="headline">
+                    <h2>Our Goal</h2>
+                </div>
+                <div class="row" style="width: 900px">
+                    <div class="hr_strip"></div>
+                    <div class="goal">
+                        <div class="one_third">
+                            <ul class="list-unstyled margin-bottom-20">
+                                <li> <i class="fa fa-check color-green"></i> leadership and organizational capacity of the community</li>
+                                <li><i class="fa fa-check color-green"></i>Advance public policies to increase opportunities and support for immigrant  integration</li>
+                                <li><i class="fa fa-check color-green"></i>Ensure that Senegalese immigrants have an active role in multiple civic arenas</li>
+                                <li><i class="fa fa-check color-green"></i>Promote community development and access to social services</li>
+                                <li><i class="fa fa-check color-green"></i>Serve as a viable model of  unity and action</li>
+                            </ul>
+                            <p><a class="btn btn-primary btn-xs" href="@Url.Action("whoweare")">About Us →</a></p>
+                        </div>
+                        <div class="clearf"></div>
+                        <div class="hr_strip"></div>
+                    </div>
+                </div>
+                <div id="tab2" class="btn-group" data-toggle="buttons-radio">
+                    <a href="#leadership" class="btn btn-large btn-info active" data-toggle="tab">Leadership Development</a>
+                    <a href="#Engagement" class="btn btn-large btn-info" data-toggle="tab">Civic Engagement</a>
+                    @*<a href="#requests2" class="btn btn-large btn-info" data-toggle="tab">Organizing & Outreach</a>*@
+                    <a href="#Family" class="btn btn-large btn-info" data-toggle="tab">Family Services</a>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="leadership">
+                        <div class="row">
+                            <p>The Leadership Development Program offers a series of  workshops and ongoing technical support aimed at enhancing community leaders’ skills and capacities to become effective advocates in their communities</p>
+                            <a class="btn btn-primary btn-xs" href="@Url.Action("ProgramDetails")">Program Details →</a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Engagement">
+                        <div class="row">
+                            @* <div class="headline">
+                                    <h2>Welcome To SAM</h2>
+                                </div>*@
+                            <p> SAM holds citizenship workshops, and promotes opportunities for civic engagement.</p>
+                            <a class="btn btn-primary btn-xs" href="@Url.Action("ProgramDetails")">Program Details →</a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Family">
+                        <div class="row">
+                            @* <div class="headline">
+                                    <h2>Welcome To SAM</h2>
+                                </div>*@
+                            <p> SAM serves as the information and resource clearinghouse of the Senegalese community to enhance access to social services and  programs for immigrants .</p>
+                            <a class="btn btn-primary btn-xs" href="@Url.Action("ProgramDetails")">Program Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--/col-md-8-->
+            <!-- Latest Shots -->
+            <div class="col-md-4">
+               
+
+                    <div class="headline">
+                        <h2>Latest Shots</h2>
+                    </div>
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td>
+
+                                <div class="sidebox pull-left col-md-2 " style="width:400px; padding-right:0px">
+                                    <div class="headline"> Community News</div>
+
+                                    <div style="font-weight: bolder;">
+                                        @Html.Partial("_Ticker1")
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="sidebox pull-right col-md-2" style="width:200px;padding-left:0px;">
+                                    <div class="headline"> Take Action</div>
+                                    <p>
+                                        <a href="@Url.Action("VolunteerRegistration","member")"><img src="~/Images/volunteer.jpg" alt="Volunteer" width="200"></a><br>
+                                        <a href="@Url.Action("MemberRegistration","Member")"><img src="~/Images/joinateam.jpg" alt="Join A Team" width="200"></a><br>
+                                        <a href="/spread_the_word"><img src="~/Images/spreadtheword.jpg" alt="Spread the Word" width="200"></a><br>
+                                        <a href="@Url.Action("Todonate")"><img src="~/Images/donate.jpg" alt="Donate" width="200"></a><br>
+                                        <a href="/email_signup"><img src="~/Images/emailsignup.jpg" alt="Sign up for Email Updates" width="200"></a>
+                                    </p>
+                                </div>
+                            </td>
+                            </tr>
+                        </table>
+                </div>
+                </div>
+            <!--/col-md-4-->
+        </div>
+        <!-- End Info Blokcs -->
+        <!-- Recent Works -->
+        @* <div class="headline">
+                <h2>Recent Events</h2>
+            </div>*@
+        @*   <div class="row margin-bottom-20">
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+                            </div>
+                            <a class="btn-more hover-effect" href="#">read more +</a>
+                        </div>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="#">Project One</a></h3>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <img class="img-responsive" src="assets/img/main/img12.jpg" alt="">
+                            </div>
+                            <a class="btn-more hover-effect" href="#">read more +</a>
+                        </div>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="#">Project Two</a></h3>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <img class="img-responsive" src="assets/img/main/img3.jpg" alt="">
+                            </div>
+                            <a class="btn-more hover-effect" href="#">read more +</a>
+                        </div>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="#">Project Three</a></h3>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <img class="img-responsive" src="assets/img/main/img17.jpg" alt="">
+                            </div>
+                            <a class="btn-more hover-effect" href="#">read more +</a>
+                        </div>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="#">Project Four</a></h3>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <!-- End Recent Works -->
+        <!-- Owl Clients v1 -->
+        <div class="headline">
+            <h2>Our Partners</h2>
+        </div>
+        <div class="owl-clients-v1">
+            <div class="item">
+                <img src="~/Images/Asa.png" alt="">
+            </div>
+            <div class="item">
+                <img src="~/Images/af.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="~/Images/mpls.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="~/Images/st-paul.gif" alt="" style="height:170px">
+            </div>
+            <div class="item">
+                <img src="~/Images/brooklynpark.jpg" alt="">
+            </div>
+           <div class="item">
+                    <img src="~/Images/maplegrove.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="~/Images/library.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="assets/img/clients4/8.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="assets/img/clients4/9.png" alt="">
+                </div>
+        </div>
+        <!-- End Owl Clients v1 -->
+    </div>
+</div>
+<!--/container-->
+<!-- End Content Part -->

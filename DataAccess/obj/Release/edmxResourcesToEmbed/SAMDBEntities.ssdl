@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SAMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EmailAddress">
+    <Key>
+      <PropertyRef Name="EmailAddressID" />
+    </Key>
+    <Property Name="EmailAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Memberid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="nchar" MaxLength="100" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblAddress">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Memberid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressLine1" Type="nchar" MaxLength="100" />
+    <Property Name="AddressLine2" Type="nchar" MaxLength="100" />
+    <Property Name="City" Type="nchar" MaxLength="100" />
+    <Property Name="State" Type="nchar" MaxLength="50" />
+    <Property Name="ZipCode" Type="nchar" MaxLength="100" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMember">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedBy" Type="nchar" MaxLength="70" />
+    <Property Name="createdDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPhone">
+    <Key>
+      <PropertyRef Name="PhoneNumberID" />
+    </Key>
+    <Property Name="PhoneNumberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Memberid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nchar" MaxLength="100" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EmailAddress_tblMember">
+    <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+    <End Role="EmailAddress" Type="Self.EmailAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMember">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="EmailAddress">
+        <PropertyRef Name="Memberid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAddress_tblAddress">
+    <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+    <End Role="tblAddress" Type="Self.tblAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMember">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="tblAddress">
+        <PropertyRef Name="Memberid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPhone_tblMember">
+    <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+    <End Role="tblPhone" Type="Self.tblPhone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMember">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="tblPhone">
+        <PropertyRef Name="Memberid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ADD_NEWADDRESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Memberid" Type="varchar" Mode="In" />
+    <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+    <Parameter Name="AddressLine2" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="State" Type="varchar" Mode="In" />
+    <Parameter Name="Zipcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ADD_NEWEMAILADDRESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Memberid" Type="varchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ADD_NEWMEMBER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+    <Parameter Name="AddressLine2" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="State" Type="varchar" Mode="In" />
+    <Parameter Name="Zipcode" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ADD_NEWPHONE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Memberid" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_GetAllMembers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_EditMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="latdiordiop">
+    <Parameter Name="memberid" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PhoneNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+    <Parameter Name="AddressLine2" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="State" Type="varchar" Mode="In" />
+    <Parameter Name="ZipCode" Type="varchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SAMDBModelStoreContainer">
+    <EntitySet Name="EmailAddress" EntityType="Self.EmailAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAddress" EntityType="Self.tblAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMember" EntityType="Self.tblMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPhone" EntityType="Self.tblPhone" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EmailAddress_tblMember" Association="Self.FK_EmailAddress_tblMember">
+      <End Role="tblMember" EntitySet="tblMember" />
+      <End Role="EmailAddress" EntitySet="EmailAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAddress_tblAddress" Association="Self.FK_tblAddress_tblAddress">
+      <End Role="tblMember" EntitySet="tblMember" />
+      <End Role="tblAddress" EntitySet="tblAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPhone_tblMember" Association="Self.FK_tblPhone_tblMember">
+      <End Role="tblMember" EntitySet="tblMember" />
+      <End Role="tblPhone" EntitySet="tblPhone" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

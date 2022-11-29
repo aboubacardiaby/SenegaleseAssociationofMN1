@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmailAddress">
+          <Key>
+            <PropertyRef Name="EmailAddressID" />
+          </Key>
+          <Property Name="EmailAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Memberid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="nchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+          <Property Name="Tax" Type="int" Nullable="false" />
+          <Property Name="Subtotal" Type="int" Nullable="false" />
+          <Property Name="Shipping" Type="int" Nullable="false" />
+          <Property Name="PayPalReference" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Memberid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressLine1" Type="nchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="nchar" MaxLength="100" />
+          <Property Name="City" Type="nchar" MaxLength="100" />
+          <Property Name="State" Type="nchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMember">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="nchar" MaxLength="70" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPhone">
+          <Key>
+            <PropertyRef Name="PhoneNumberID" />
+          </Key>
+          <Property Name="PhoneNumberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Memberid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="PayPalReference" Type="nvarchar(max)" />
+          <Property Name="DonationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_OrderItems_dbo_Orders_OrderId">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddress_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="EmailAddress" Type="Self.EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="EmailAddress">
+              <PropertyRef Name="Memberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAddress_tblAddress">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblAddress" Type="Self.tblAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblAddress">
+              <PropertyRef Name="Memberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPhone_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblPhone" Type="Self.tblPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblPhone">
+              <PropertyRef Name="Memberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ADD_NEWADDRESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Memberid" Type="varchar" Mode="In" />
+          <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="AddressLine2" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zipcode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_NEWEMAILADDRESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Memberid" Type="varchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_NEWMEMBER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="AddressLine2" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zipcode" Type="varchar" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_NEWPHONE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Memberid" Type="varchar" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_GetAllMembers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SAMDBModelStoreContainer">
+          <EntitySet Name="EmailAddress" EntityType="Self.EmailAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAddress" EntityType="Self.tblAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMember" EntityType="Self.tblMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPhone" EntityType="Self.tblPhone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="Self.FK_dbo_OrderItems_dbo_Orders_OrderId">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddress_tblMember" Association="Self.FK_EmailAddress_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="EmailAddress" EntitySet="EmailAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAddress_tblAddress" Association="Self.FK_tblAddress_tblAddress">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblAddress" EntitySet="tblAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPhone_tblMember" Association="Self.FK_tblPhone_tblMember">
+            <End Role="tblMember" EntitySet="tblMember" />
+            <End Role="tblPhone" EntitySet="tblPhone" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmailAddress">
+          <Key>
+            <PropertyRef Name="EmailAddressID" />
+          </Key>
+          <Property Name="EmailAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Memberid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailAddress1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_EmailAddress_tblMember" FromRole="EmailAddress" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Memberid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblAddress_tblAddress" FromRole="tblAddress" ToRole="tblMember" />
+        </EntityType>
+        <EntityType Name="tblMember">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EmailAddresses" Relationship="Self.FK_EmailAddress_tblMember" FromRole="tblMember" ToRole="EmailAddress" />
+          <NavigationProperty Name="tblAddresses" Relationship="Self.FK_tblAddress_tblAddress" FromRole="tblMember" ToRole="tblAddress" />
+          <NavigationProperty Name="tblPhones" Relationship="Self.FK_tblPhone_tblMember" FromRole="tblMember" ToRole="tblPhone" />
+        </EntityType>
+        <EntityType Name="tblPhone">
+          <Key>
+            <PropertyRef Name="PhoneNumberID" />
+          </Key>
+          <Property Name="PhoneNumberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Memberid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblMember" Relationship="Self.FK_tblPhone_tblMember" FromRole="tblPhone" ToRole="tblMember" />
+        </EntityType>
+        <Association Name="FK_EmailAddress_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="EmailAddress" Type="Self.EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="EmailAddress">
+              <PropertyRef Name="Memberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAddress_tblAddress">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblAddress" Type="Self.tblAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblAddress">
+              <PropertyRef Name="Memberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPhone_tblMember">
+          <End Role="tblMember" Type="Self.tblMember" Multiplicity="1" />
+          <End Role="tblPhone" Type="Self.tblPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMember">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblPhone">
+              <PropertyRef Name="Memberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAMDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmailAddresses" EntityType="Self.EmailAddress" />
+          <EntitySet Name="tblAddresses" EntityType="Self.tblAddress" />
+          <EntitySet Name="tblMembers" EntityType="Self.tblMember" />
+          <EntitySet Name="tblPhones" EntityType="Self.tblPhone" />
+          <AssociationSet Name="FK_EmailAddress_tblMember" Association="Self.FK_EmailAddress_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="EmailAddress" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAddress_tblAddress" Association="Self.FK_tblAddress_tblAddress">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblAddress" EntitySet="tblAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPhone_tblMember" Association="Self.FK_tblPhone_tblMember">
+            <End Role="tblMember" EntitySet="tblMembers" />
+            <End Role="tblPhone" EntitySet="tblPhones" />
+          </AssociationSet>
+          <FunctionImport Name="ADD_NEWADDRESS">
+            <Parameter Name="Memberid" Mode="In" Type="String" />
+            <Parameter Name="AddressLine1" Mode="In" Type="String" />
+            <Parameter Name="AddressLine2" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zipcode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_NEWEMAILADDRESS">
+            <Parameter Name="Memberid" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_NEWMEMBER">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="AddressLine1" Mode="In" Type="String" />
+            <Parameter Name="AddressLine2" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zipcode" Mode="In" Type="String" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_NEWPHONE">
+            <Parameter Name="Memberid" Mode="In" Type="String" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_DELETEMEMBER">
+            <Parameter Name="MEMBERID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_GetAllMembers" ReturnType="Collection(SAMDBModel.Usp_GetAllMembers_Result)" />
+          <FunctionImport Name="Usp_EditMember">
+            <Parameter Name="memberid" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="AddressLine1" Mode="In" Type="String" />
+            <Parameter Name="AddressLine2" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="OrderItems" EntityType="SAMDBModel.OrderItem" />
+          <EntitySet Name="Orders" EntityType="SAMDBModel.Order" />
+          <EntitySet Name="Tickets" EntityType="SAMDBModel.Ticket" />
+          <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="SAMDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="Usp_GetAllMembers_Result">
+          <Property Type="String" Name="MemberId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="AddressLine1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AddressLine2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="SAMDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="Tax" Type="Int32" Nullable="false" />
+          <Property Name="Subtotal" Type="Int32" Nullable="false" />
+          <Property Name="Shipping" Type="Int32" Nullable="false" />
+          <Property Name="PayPalReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderItems" Relationship="SAMDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PayPalReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DonationDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_OrderItems_dbo_Orders_OrderId">
+          <End Type="SAMDBModel.Order" Role="Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SAMDBModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAMDBModelStoreContainer" CdmEntityContainer="SAMDBEntities">
+          <EntitySetMapping Name="EmailAddresses">
+            <EntityTypeMapping TypeName="SAMDBModel.EmailAddress">
+              <MappingFragment StoreEntitySet="EmailAddress">
+                <ScalarProperty Name="EmailAddressID" ColumnName="EmailAddressID" />
+                <ScalarProperty Name="Memberid" ColumnName="Memberid" />
+                <ScalarProperty Name="EmailAddress1" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAddresses">
+            <EntityTypeMapping TypeName="SAMDBModel.tblAddress">
+              <MappingFragment StoreEntitySet="tblAddress">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Memberid" ColumnName="Memberid" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMembers">
+            <EntityTypeMapping TypeName="SAMDBModel.tblMember">
+              <MappingFragment StoreEntitySet="tblMember">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPhones">
+            <EntityTypeMapping TypeName="SAMDBModel.tblPhone">
+              <MappingFragment StoreEntitySet="tblPhone">
+                <ScalarProperty Name="PhoneNumberID" ColumnName="PhoneNumberID" />
+                <ScalarProperty Name="Memberid" ColumnName="Memberid" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ADD_NEWADDRESS" FunctionName="SAMDBModel.Store.ADD_NEWADDRESS" />
+          <FunctionImportMapping FunctionImportName="ADD_NEWEMAILADDRESS" FunctionName="SAMDBModel.Store.ADD_NEWEMAILADDRESS" />
+          <FunctionImportMapping FunctionImportName="ADD_NEWMEMBER" FunctionName="SAMDBModel.Store.ADD_NEWMEMBER" />
+          <FunctionImportMapping FunctionImportName="ADD_NEWPHONE" FunctionName="SAMDBModel.Store.ADD_NEWPHONE" />
+          <FunctionImportMapping FunctionImportName="Usp_GetAllMembers" FunctionName="SAMDBModel.Store.Usp_GetAllMembers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SAMDBModel.Usp_GetAllMembers_Result">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="SAMDBModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="SAMDBModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="PayPalReference" ColumnName="PayPalReference" />
+                <ScalarProperty Name="Shipping" ColumnName="Shipping" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="SAMDBModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+                <ScalarProperty Name="PayPalReference" ColumnName="PayPalReference" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

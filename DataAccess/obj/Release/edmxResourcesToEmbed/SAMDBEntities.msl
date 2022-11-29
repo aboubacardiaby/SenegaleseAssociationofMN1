@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SAMDBModelStoreContainer" CdmEntityContainer="SAMDBEntities">
+    <EntitySetMapping Name="EmailAddresses">
+      <EntityTypeMapping TypeName="SAMDBModel.EmailAddress">
+        <MappingFragment StoreEntitySet="EmailAddress">
+          <ScalarProperty Name="EmailAddressID" ColumnName="EmailAddressID" />
+          <ScalarProperty Name="Memberid" ColumnName="Memberid" />
+          <ScalarProperty Name="EmailAddress1" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAddresses">
+      <EntityTypeMapping TypeName="SAMDBModel.tblAddress">
+        <MappingFragment StoreEntitySet="tblAddress">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="Memberid" ColumnName="Memberid" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMembers">
+      <EntityTypeMapping TypeName="SAMDBModel.tblMember">
+        <MappingFragment StoreEntitySet="tblMember">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPhones">
+      <EntityTypeMapping TypeName="SAMDBModel.tblPhone">
+        <MappingFragment StoreEntitySet="tblPhone">
+          <ScalarProperty Name="PhoneNumberID" ColumnName="PhoneNumberID" />
+          <ScalarProperty Name="Memberid" ColumnName="Memberid" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ADD_NEWADDRESS" FunctionName="SAMDBModel.Store.ADD_NEWADDRESS" />
+    <FunctionImportMapping FunctionImportName="ADD_NEWEMAILADDRESS" FunctionName="SAMDBModel.Store.ADD_NEWEMAILADDRESS" />
+    <FunctionImportMapping FunctionImportName="ADD_NEWMEMBER" FunctionName="SAMDBModel.Store.ADD_NEWMEMBER" />
+    <FunctionImportMapping FunctionImportName="ADD_NEWPHONE" FunctionName="SAMDBModel.Store.ADD_NEWPHONE" />
+    <FunctionImportMapping FunctionImportName="Usp_GetAllMembers" FunctionName="SAMDBModel.Store.Usp_GetAllMembers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAMDBModel.Usp_GetAllMembers_Result">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_EditMember" FunctionName="SAMDBModel.Store.Usp_EditMember" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/UpgradeLog2.htm
+/SAM/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs

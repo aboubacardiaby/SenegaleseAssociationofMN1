@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bb61463be2f4db090f97735f7c21ea8" Name="Diagram1">
+        <EntityTypeShape EntityType="SAMDBModel.EmailAddress" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMDBModel.tblAddress" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMDBModel.tblMember" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMDBModel.tblPhone" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="SAMDBModel.FK_EmailAddress_tblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMDBModel.FK_tblAddress_tblAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMDBModel.FK_tblPhone_tblMember" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SAMDBModel.OrderItem" Width="1.5" PointX="7.625" PointY="1.125" />
+        <EntityTypeShape EntityType="SAMDBModel.Order" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="SAMDBModel.Ticket" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="SAMDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

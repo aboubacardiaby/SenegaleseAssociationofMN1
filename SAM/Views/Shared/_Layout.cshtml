@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+@{
+    var jTableStyle = "metro/blue/jtable.css";
+    if (!string.IsNullOrEmpty(Request["jTableStyle"]))
+    {
+        jTableStyle = Request["jTableStyle"];
+    }
+}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title -Senegalese Association of Minnesota-SAM</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @*@Styles.Render("~/Content/css")*@
+        @Scripts.Render("~/bundles/modernizr")
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico">
+        <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+		 <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="~/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/smoothScroll.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/parallax-slider/js/modernizr.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/parallax-slider/js/jquery.cslider.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <!-- JS Customization -->
+    <script type="text/javascript" src="~/assets/js/custom.js"></script>
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="~/assets/js/app.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/owl-carousel.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/style-switcher.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/parallax-slider.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            OwlCarousel.initOwlCarousel();
+            StyleSwitcher.initStyleSwitcher();
+            ParallaxSlider.initParallaxSlider();
+        });
+    </script>
+        <!-- Web Fonts -->
+        <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+        <!-- CSS Global Compulsory -->
+        <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/assets/css/style.css">
+        <!-- CSS Header and Footer -->
+        <link rel="stylesheet" href="~/assets/css/headers/header-default.css">
+        <link rel="stylesheet" href="~/assets/css/footers/footer-v1.css">
+        <!-- CSS Implementing Plugins -->
+        <link rel="stylesheet" href="~/assets/plugins/animate.css">
+        <link rel="stylesheet" href="~/assets/plugins/line-icons/line-icons.css">
+
+		<link href="~/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/assets/plugins/parallax-slider/css/parallax-slider.css">
+        <link rel="stylesheet" href="~/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
+        <!-- CSS Theme -->
+        <link rel="stylesheet" href="~/assets/css/theme-colors/default.css" id="style_color">
+        <link rel="stylesheet" href="~/assets/css/theme-skins/dark.css">
+        <!-- CSS Customization -->
+        <link rel="stylesheet" href="~/assets/css/custom.css">
+        <script src="~/Content/menu/js/jquery-ui-1.10.1.custom.min.js"></script>
+        <script src="~/Content/menu/js/hoverIntent.js"></script>
+        <script src="~/Content/menu/js/supersubs.js"></script>
+        <script src="~/Content/menu/js/superfish.js"></script>
+        <script src="~/Content/menu/js/jquery.bgiframe.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <link href="~/Content/menu/css/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />        
+        <link href="~/Content/menu/css/superfish.css" rel="stylesheet" />
+        <link href="~/Content/menu/css/superfish-vertical.css" rel="stylesheet" />
+        <link href="~/Content/menu/css/superfish-navbar.css" rel="stylesheet" />
+        <link href="~/Content/menu/css/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/themes/metroblue/jquery-ui.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/highlight.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Scripts/jtable/themes/" + jTableStyle)" rel="stylesheet" type="text/css" />
+
+        <link href="@Url.Content("~/Scripts/syntaxhighligher/styles/shCore.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Scripts/syntaxhighligher/styles/shThemeDefault.css")" rel="stylesheet" type="text/css" />
+
+        @RenderSection("CssImport", false)
+
+       
+        <script src="@Url.Content("~/Scripts/syntaxhighligher/shCore.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/syntaxhighligher/shBrushJScript.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/syntaxhighligher/shBrushXml.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/syntaxhighligher/shBrushCSharp.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/syntaxhighligher/shBrushSql.js")" type="text/javascript"></script>
+
+        <script src="@Url.Content("~/Scripts/jtablesite.js")" type="text/javascript"></script>      
+        <script src="~/Scripts/jtable/jquery.jtable.js"></script>
+	    <style type="text/css">
+            .rtl {
+                direction: rtl;
+            }
+
+            body {
+                font-family: cursive;
+                font-size: 13px;
+                background-color:white
+            }
+	        .deepshadow {
+	            font-family: Verdana",Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	            font-size: 42px;
+	            padding: 0px 0px;
+	            text-align: center;
+	            text-transform: uppercase;
+	            text-rendering: optimizeLegibility;
+                color: green;
+                  background-color: transparent;
+                  letter-spacing: .1em;
+                  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
+	                        }
+  
+                            .link-list a {
+	                color: black;
+	                font-size: 11px;
+	                padding: 6px 0px;
+	                display: inline-block;
+	                text-transform: uppercase;
+}
+.footer-v1 .footer {
+    padding: 40px 0;
+    background: #272727;
+   
+}		
+        </style>
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Ajax"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+        }({
+            instrumentationKey:"682a28ff-6bfc-46af-bbca-e7a6a17c83d3"
+        });
+        
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+        // initialise plugins
+        jQuery(function () {
+
+            jQuery('#example').superfish({
+                //useClick: true
+            });
+            $("ul.sf-menu li").addClass("ui-state-default");
+
+            $("ul.sf-menu li").hover(function () { $(this).addClass('ui-state-hover'); },
+                                     function () { $(this).removeClass('ui-state-hover'); });
+        });
+
+  
+
+        	
+
+     
+    </script>
+    </head>
+
+   
+<body>
+   
+    <div class="wrapper">
+        <!--=== Header ===-->
+        <div class="header" >
+            <div class="container" style="height:200px;" >
+                <!-- Logo -->
+                <a class="logo" href="@Url.Action("Index")">
+                   <img src="~/Images/senUsa.jpg" width="75" />                    
+                </a>         
+                <!-- End Logo -->
+                       
+                <!-- Topbar -->
+                <div class="topbar">
+                    <ul class="loginbar pull-right " style="margin-right:150px">
+                        <li class="hoverSelector">
+                            <i class="fa fa-globe"></i>
+                            <a>Languages</a>
+                            <ul class="languages hoverSelectorBlock">
+                                <li class="active">
+                                    <a href="#">English <i class="fa fa-check"></i></a>
+                                </li>
+                                 </ul>
+                        </li>
+                         @*<li> @Html.Partial("_LoginPartial")</li>*@
+                       @* <li class="topbar-devider"></li>*@
+                      @*  <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        <li class="topbar-devider"></li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>*@
+                        
+                    </ul>
+                    
+					<br />
+			     </div>
+				<ul class="social-icons text-center pull-right" style="margin-right:1px">
+					<li><a class="rounded-x social_facebook" data-original-title="Facebook" href="https://www.facebook.com/search/top/?q=senegalese%20association%20of%20mn%20(sam)"></a></li>
+					<li><a class="rounded-x social_twitter" data-original-title="Twitter" href="#"></a></li>
+					<li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+					<li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
+				</ul>
+                <!-- End Topbar -->
+                <br />
+
+              <h1 class="deepshadow">Senegalese Association of Minnesota (SAM)</h1>
+                <div class="pull-left">
+                    <a href="@Url.Action("Index","Donation")">
+                    <img src="~/Images/paypaldonate.gif" width="200" /></a>
+                </div>
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <!-- End Toggle -->
+            </div><!--/end container-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                <div class="container">
+                   
+                    <ul class="nav navbar-nav sf-menu">
+                        <!-- Home -->
+                        <li class="dropdown active current ">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Home
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+								<li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                            </ul>
+                        </li>
+                        <!-- End Home -->
+                        <!-- Pages -->
+                        @*<li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Links
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Board Members", "Board", "Home")</li>
+                            </ul>
+                        </li>*@
+                        <!-- End Pages -->
+                        <!-- Blog -->
+                        @*<li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Board
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Board Members", "Board", "Home")</li>
+                                </ul>
+</li>*@
+                        <!-- End Blog -->
+                        <!-- Portfolio -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Liens Utiles", "Links", "Home")</li>
+								<li>@Html.ActionLink("Member Assistances", "MemberAssistances", "Home")</li>
+								<li>@Html.ActionLink("Liens Utiles", "Links", "Home")</li>
+                            </ul>
+                        </li>
+                        <!-- End Portfolio -->
+                        <!-- Features -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Who We Are
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("who we are?", "whoweare", "Home")</li>
+                                <li>@Html.ActionLink("Historique", "Historique", "Home")</li>
+                                <li>@Html.ActionLink("Mot du president", "MotduPresident", "Home")</li>
+                                <li>@Html.ActionLink("executive committee", "executivecommittee", "Home")</li>
+								<li>@Html.ActionLink("By laws", "Bylaws", "Home")</li>
+								<li>@Html.ActionLink("About Senegal", "AboutSenegal", "Home")</li>                               
+                            </ul>
+
+                        </li>
+                        <!-- End Features -->
+                        <!-- Shortcodes -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Gallery
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Gallery", "Gallery", "Home")</li>
+                            </ul>
+                        </li>
+                        <!-- End Shortcodes -->
+                        <!-- Demo Pages -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Member Corners
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Member Corners", "Login", "Account")</li>
+								<li>@Html.ActionLink("Register", "MemberRegistration", "Member")</li>
+								<li>@Html.ActionLink("Events Calendar", "Calendar", "Home")</li>
+                            </ul>
+                        </li>
+                        <!-- End Demo Pages -->
+                        <!-- Search Block -->
+                        <li>
+                            <i class="search fa fa-search search-btn"></i>
+                            <div class="search-open">
+                                <div class="input-group animated fadeInDown">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+                                        <button class="btn-u" type="button">Go</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- End Search Block -->
+                    </ul>
+                </div><!--/end container-->
+            </div><!--/navbar-collapse-->
+        </div>
+        <!--=== End Header ===-->
+
+        @RenderBody()
+        <!--=== Footer Version 1 ===-->
+        <div class="footer-v1">
+            <div class="footer" style="background: #272727;">
+                <!-- About -->
+                <div class="col-md-3 md-margin-bottom-40" style="width:600px">
+                    <a href="index.html"><img id="logo-footer" class="footer-logo" src="~/Images/senUsa.jpg" width="50" alt=""></a>
+                  
+                        <h2>
+                            The Senegalese Association of Minnesota was formed:
+                        </h2>
+               
+                    <ul class="list-unstyled link-list" style="color:wheat">
+                        <li style="color:white">
+                            To study the social, cultural, educational and economic problems of the Senegalese population in Minnesota;
+                        </li>
+                        <li style ="color:white">
+                            To aid in the gathering of Senegalese with disregard to their beliefs, philosophies, religious and political affiliations;
+                        </li>
+                        <li style="color:white">
+                            To maintain and strengthen their socio-cultural values and traditions;
+                        </li>
+                        <li style="color:white">
+                            To take part in the community’s economic development.
+                        </li>
+                    </ul>
+                </div><!--/col-md-3-->
+                <!-- End About -->
+                <div class="row">
+                   
+                        <!-- Link List -->
+                        <div class="col-md-3 md-margin-bottom-40">
+                            <div class="headline"><h2>Useful Links</h2></div>
+                            <ul class="list-unstyled link-list">
+                                <li><a href="@Url.Action("About")">About us</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="@Url.Action("Historique")">Historique</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="#">About Senegal</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="#">Community</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="#">Contact us</a><i class="fa fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 map-img md-margin-bottom-40"></div><!--/col-md-3-->
+                        <!-- End Link List -->
+                        <!-- Address -->
+                        <div class="col-md-3 map-img md-margin-bottom-40">
+                            <div class="headline"><h2>Contact Us</h2></div>
+                            <address class="md-margin-bottom-40">
+                                7964 Brooklyn Blvd Suite 166 <br />
+                                Minneapolis Mn 55445 <br />
+                                Phone:(612)-5476728 <br />
+                                Fax: (612)-5476728 <br />
+                                <a href="mailto:samsupport@senegalesemn.com" class="">samsupport@senegalesemn.com</a>
+                            </address>
+                        </div><!--/col-md-3-->
+                        <!-- End Address -->
+                    </div>
+            </div>
+        </div>
+            <!--/footer-->
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+                                2016 &copy; All Rights Reserved.
+                                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                            </p>
+                        </div>
+                        <!-- Social Links -->
+                        <div class="col-md-6">
+                            <ul class="footer-socials list-inline">
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                                        <i class="fa fa-skype"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google Plus">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dribbble">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Social Links -->
+                    </div>
+                </div>
+            </div><!--/copyright-->
+            <!--=== End Footer Version 1 ===-->
+        </div><!--/wrapper-->
+    <!-- JS Global Compulsory -->
+   
+    <!--[if lt IE 9]>
+        <script src="~/assets/plugins/respond.js"></script>
+        <script src="~/assets/plugins/html5shiv.js"></script>
+        <script src="~/assets/plugins/placeholder-IE-fixes.js"></script>
+    <![endif]-->
+</body>
+</html>
